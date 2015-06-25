@@ -1,8 +1,26 @@
 // spec.js
 describe('Protractor Nav', function() {
-  it('there is a nav bar', function() {
-  it('there are 3 nav options', function() {
-  it('the last option is named messages', function() {
-    
+	var nav = element(by.css('.nav');
+	var navOptions = element.all(by.css('.nav-options');
+
+	beforeEach(function(){
+		browser.get('http://localhost:8080/')
+});
+
+  it('should have a nav bar', function() {
+  	expect(nav.isPresent()).toBe(true)
   });
+
+
+  it('should have 3 nav options', function() {
+  	expect(navOptions.count()).toBe(3)
+  });
+
+
+  it('should have final option that says "Messages"', function() {
+  	expect(navOptions.last().getText()).toContain('Messages');
+  });
+
+
+   
 });
